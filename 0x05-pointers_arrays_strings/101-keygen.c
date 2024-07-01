@@ -1,38 +1,34 @@
-#include "main.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 /**
- * _strcpy - function name
- * @dest: function parameter 1
- * @src: parameter 2
- * Return: always 0
- */
-
-char *_strcpy(char *dest, char *src)
-{
-int i;
-
-for (i = 0; src[i] != '\0'; i++)
-{
-dest[i] = src[i];
-}
-dest[i] = '\0';
-
-return (dest);
-}
-
-/**
- * main - Entry point
- * Description: This function tests _strcpy function.
+ * main - program that generates random valid
+ * passwords for the program 101-crackme
  * Return: Always 0 (Success)
  */
 int main(void)
 {
-char src[] = "Hello, World!";
-char dest[50];
+int pass[100];
+int i, sum, n;
 
-_strcpy(dest, src);
-printf("Copied string: %s\n", dest);
+sum = 0;
+
+srand(time(NULL));
+
+for (i = 0; i < 100; i++)
+{
+pass[i] = rand() % 78;
+sum += (pass[i] + '0');
+putchar(pass[i] + '0');
+if ((2772 - sum) -'0' < 78)
+{
+n = 2772 - sum - '0';
+sum += n;
+putchar(n + '0');
+break;
+}
+}
 
 return (0);
 }
